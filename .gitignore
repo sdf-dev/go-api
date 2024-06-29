@@ -1,0 +1,7 @@
+#Dependency
+/go.sum
+/go.sum.old
+
+#Go worksapce
+go.work
+go.work.sum
