@@ -1,7 +1,9 @@
 package data
 
 import (
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -40,3 +42,22 @@ func PostProgrammer(c *gin.Context) {
 	programmers = append(programmers, newProgrammer)
 	c.IndentedJSON(http.StatusCreated, newProgrammer)
 }
+
+func ReturnProgrammerByID(c *gin.Context) {
+	id := c.Param("id")
+	i, err := strconv.Atoi(id)
+
+	if err != nil {
+		fmt.Println("error during type conversion", err)
+	}
+
+	for _, a := range programmers {
+		if a.ID == i {
+			c.IndentedJSON(http.StatusOK, a)
+			return
+		}
+	}
+	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "programmer not found!"})
+}
+
+
