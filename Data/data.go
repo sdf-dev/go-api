@@ -60,4 +60,18 @@ func ReturnProgrammerByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "programmer not found!"})
 }
 
+func DeleteProgrammerByID(c *gin.Context) {
+	id := c.Params.ByName("id")
+	i, err := strconv.Atoi(id)
 
+	if err != nil {
+		fmt.Println("error during type conversion", err)
+	}
+	for _, a := range programmers {
+		if a.ID == i {
+			// remember index 0
+			programmers = append(programmers[:i-1], programmers[i:]...)
+			return
+		}
+	}
+}
