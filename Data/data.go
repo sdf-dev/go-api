@@ -28,3 +28,15 @@ type programmer struct {
 func GetProgrammers(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, programmers)
 }
+
+
+func PostProgrammer(c *gin.Context) {
+	var newProgrammer programmer
+
+	if err := c.BindJSON(&newProgrammer); err != nil {
+		return
+	}
+
+	programmers = append(programmers, newProgrammer)
+	c.IndentedJSON(http.StatusCreated, newProgrammer)
+}

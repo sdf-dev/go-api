@@ -11,5 +11,6 @@ func Routing() {
 	fmt.Println("Hello, World!")
 	router := gin.Default()
 	router.GET("/programmers", data.GetProgrammers)
+	router.POST("/programmers", data.PostProgrammer)
 	router.Run("localhost:8080")
 }
