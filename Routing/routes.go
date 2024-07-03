@@ -12,6 +12,7 @@ func Routing() {
 	router := gin.Default()
 	router.GET("/programmers", data.GetProgrammers)
 	router.POST("/programmers", data.PostProgrammer)
-	router.GET("/programmers/:id", data.ReturnProgrammerByID) 
+	router.GET("/programmers/:id", data.ReturnProgrammerByID)
+	router.DELETE("/programmers/:id", data.DeleteProgrammerByID) 
 	router.Run("localhost:8080")
 }
