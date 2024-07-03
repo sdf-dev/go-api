@@ -5,3 +5,5 @@
 #Go worksapce
 go.work
 go.work.sum
+
+.vscode
