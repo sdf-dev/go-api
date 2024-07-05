@@ -13,6 +13,7 @@ func Routing() {
 	router.GET("/programmers", data.GetProgrammers)
 	router.POST("/programmers", data.PostProgrammer)
 	router.GET("/programmers/:id", data.ReturnProgrammerByID)
-	router.DELETE("/programmers/:id", data.DeleteProgrammerByID) 
+	router.DELETE("/programmers/:id", data.DeleteProgrammerByID)
+	router.PUT("/programmers/:id", data.UpdateProgrammerByID)
 	router.Run("localhost:8080")
 }
