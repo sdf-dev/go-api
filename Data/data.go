@@ -67,11 +67,32 @@ func DeleteProgrammerByID(c *gin.Context) {
 	if err != nil {
 		fmt.Println("error during type conversion", err)
 	}
+
 	for _, a := range programmers {
 		if a.ID == i {
 			// remember index 0
 			programmers = append(programmers[:i-1], programmers[i:]...)
 			return
+		}
+	}
+}
+
+func UpdateProgrammerByID(c *gin.Context) {
+	var newProgrammer programmer
+	id := c.Params.ByName("id")
+	i, error := strconv.Atoi(id)
+
+	if error != nil {
+		fmt.Println("error during type conversion", error)
+	}
+
+	if err := c.BindJSON(&newProgrammer); err != nil {
+		return
+	}
+
+	for _, a := range programmers {
+		if a.ID == i {
+			programmers[i-1] = newProgrammer
 		}
 	}
 }
